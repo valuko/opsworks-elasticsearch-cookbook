@@ -14,6 +14,9 @@ script "install_plugin_es_hq" do
 	cwd "#{node.elasticsearch[:dir]}/elasticsearch-#{node.elasticsearch[:version]}/bin/"
 	code <<-EOH
   	plugin -install royrusso/elasticsearch-HQ
+	plugin -install elasticsearch/elasticsearch-lang-javascript/2.3.0
+	plugin -install karmi/elasticsearch-paramedic
+	plugin -install lukas-vlcek/bigdesk
   	EOH
 	not_if { File.exist?("#{node.elasticsearch[:dir]}/elasticsearch-#{node.elasticsearch[:version]}/plugins/HQ") }
 end
